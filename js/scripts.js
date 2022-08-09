@@ -1,5 +1,7 @@
-const url = `https://swapi.dev/api/people/`
+const params = new URLSearchParams(window.location.search)
+const page = params.get('page')
 
+const url = `https://swapi.dev/api/people?page=${page}`
 
 let fetchConfig = {
     method: "GET"
