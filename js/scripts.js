@@ -1,13 +1,14 @@
-const params = new URLSearchParams(window.location.search)
-const page = params.get('page')
+// const params = new URLSearchParams(window.location.search)
+// const page = params.get('page')
 
-const url = `https://swapi.dev/api/people?page=${page}`
 
-let fetchConfig = {
-    method: "GET"
-}
+function getApi(){
+    const url = `https://swapi.dev/api/people?page=${num}`
+    
+    let fetchConfig = {
+        method: "GET"
+    }
 
-function getApi(url){
     fetch(url, fetchConfig)
         .then(response => {
             response.json()
@@ -16,7 +17,7 @@ function getApi(url){
             })
         }
     )}
-
+   
 function getInfos(people){
     for (let i = 0; i < people.length; i++) {
         var data = {
@@ -25,7 +26,7 @@ function getInfos(people){
             hair_color: people[i].hair_color,
             skin_color: people[i].skin_color,
 			eye_color: people[i].eye_color,
-			birth_year: people[i].birth_year,
+			birth_year: people[i].birth_year
         }
         
         var info = document.createElement("div")
@@ -70,4 +71,8 @@ function getInfos(people){
         
     } 
 }
-getApi(url)
+
+for (let i = 1; i < 10; i++) {
+    var num = i
+    getApi()
+}
