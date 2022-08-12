@@ -1,6 +1,5 @@
-// const params = new URLSearchParams(window.location.search)
-// const page = params.get('page')
-
+const params = new URLSearchParams(window.location.search)
+const page = params.get('page')
 
 function getApi(){
     const url = `https://swapi.dev/api/people?page=${num}`
@@ -13,6 +12,7 @@ function getApi(){
         .then(response => {
             response.json()
             .then(people => {
+                console.log(people)
                 getInfos(people.results)
             })
         }
@@ -71,8 +71,22 @@ function getInfos(people){
         
     } 
 }
+function listAllPeople(){
+    let container = document.querySelector('.container')
+    container.innerHTML = ''
+    
+    for (let i = 1; i < 10; i++) {
+        num = i
+        getApi()
+    }
+}
 
-for (let i = 1; i < 10; i++) {
-    var num = i
+function listPersonPage(){
+    num = page
     getApi()
 }
+
+const listPage = document.querySelectorAll('.feijao')
+listPage.addEventListener("click", listPersonPage())
+
+
