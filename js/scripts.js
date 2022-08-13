@@ -1,9 +1,11 @@
+const container = document.querySelector(".container")
 const params = new URLSearchParams(window.location.search)
 const page = params.get('page')
+const url = `https://swapi.dev/api/people`
+var linkNext = ''
+var linkPrevious = ''
 
-function getApi(){
-    const url = `https://swapi.dev/api/people?page=${num}`
-    
+function getApi(url){
     let fetchConfig = {
         method: "GET"
     }
@@ -12,12 +14,39 @@ function getApi(){
         .then(response => {
             response.json()
             .then(people => {
-                console.log(people)
-                getInfos(people.results)
+                setButtons(people)
             })
         }
     )}
-   
+
+function setButtons(people){
+
+    var returnAPI = {
+        count: people.count,
+        next: people.next,
+        previous: people.previous,
+        results: people.results
+    }
+    let htmlButtons = document.querySelector(".buttons")
+    
+    linkNext = returnAPI.next
+    linkPrevious = returnAPI.previous
+    
+    console.log(linkNext, linkPrevious)
+    htmlButtons.innerHTML = '<input type="button" value="next" id="linkNext" onclick="getApi(linkNext);cleanContainer();"> <br> <input type="button" value="previous" id="linkPrevious" onclick="getApi(linkPrevious);cleanContainer();">'
+
+    if (linkNext === null ){
+        document.getElementById('linkNext').style.display = "none";
+    }
+
+    if (linkPrevious === null ){
+        document.getElementById('linkPrevious').style.display = "none";
+    }
+
+    getInfos(returnAPI.results)
+}
+
+
 function getInfos(people){
     for (let i = 0; i < people.length; i++) {
         var data = {
@@ -71,22 +100,21 @@ function getInfos(people){
         
     } 
 }
-function listAllPeople(){
+
+//// FAZER TODOS --- 
+// function listAllPeople(){
+//     let container = document.querySelector('.container')
+//     container.innerHTML = ''
+    
+//     for (let i = 1; i < 10; i++) {
+//         num = i
+//         let urlTodos = `https://swapi.dev/api/people/?page=${num}`
+//         getApi(urlTodos)
+//     }
+// }
+
+function cleanContainer(){
     let container = document.querySelector('.container')
     container.innerHTML = ''
-    
-    for (let i = 1; i < 10; i++) {
-        num = i
-        getApi()
-    }
 }
-
-function listPersonPage(){
-    num = page
-    getApi()
-}
-
-const listPage = document.querySelectorAll('.feijao')
-listPage.addEventListener("click", listPersonPage())
-
-
+getApi(url)
