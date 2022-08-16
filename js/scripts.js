@@ -20,13 +20,14 @@ function getApi(url){
     )}
 
 function setButtons(people){
-
+    
     var returnAPI = {
         count: people.count,
         next: people.next,
         previous: people.previous,
         results: people.results
     }
+    
     let htmlButtons = document.querySelector(".buttons")
     
     linkNext = returnAPI.next

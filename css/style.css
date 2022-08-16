@@ -1,3 +1,65 @@
+@import 'reset.css';
+
 body{
-    background-color: grey;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #fff;
+}
+
+header{
+    display: flex;
+    justify-content:center;
+
+    font-family: 'Starjedi';
+    font-size: 2em;
+    color: rgb(248, 228, 10);
+    background-color: rgb(16, 10, 40);
+    background-image: url(add/capa.png);
+    background-size: 15%;    
+}
+
+main{
+    flex:1;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+    align-items: baseline;
+    background-color: rgb(16, 10, 40);
+}
+
+footer{
+    background-image: url(add/capa.png);
+    background-size: 15%; 
+    height:50px;
+}
+
+
+/* ------------------------- */
+#search{
+    align-self: center;
+    margin: 5%;
+    width: 40%;
+    height: 48px;
+    outline:none;
+    font-size: 125%;
+    background-color:rgb(248, 228, 10);
+    background-image: url(https://imagensemoldes.com.br/wp-content/uploads/2020/06/%C3%8Dcone-Millennium-Falcon-Star-Wars-PNG.png);
+    background-repeat: no-repeat;
+    border: none;
+    outline: rgb(248, 228, 10) solid 10px;
+    padding: 0 50px;
+    background-size: 35px;
+}
+
+.info{
+    background-color: rgb(126, 126, 126);
+    margin: 2%;
+}
+
+.buttons{
+    display: flex;
+    
 }
