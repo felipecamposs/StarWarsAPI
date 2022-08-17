@@ -118,4 +118,18 @@ function cleanContainer(){
     let container = document.querySelector('.container')
     container.innerHTML = ''
 }
+
+const search = document.querySelector('#search');
+search.addEventListener('input', filterSearch);
+    
+
+function filterSearch(){
+    const info = container.querySelectorAll('.info');
+
+    info.forEach((people) => {
+        let text = people.getAttribute("name");
+        console.log(text)
+    });
+}
+
 getApi(url)
