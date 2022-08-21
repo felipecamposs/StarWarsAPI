@@ -3,6 +3,7 @@ const params = new URLSearchParams(window.location.search)
 const page = params.get('page')
 const url = `https://swapi.dev/api/people`
 const btnAll = document.querySelector('#btn-all')
+const search = document.querySelector('#search')
 var linkNext = ''
 var linkPrevious = ''
 var contagem = ''
@@ -21,6 +22,19 @@ function getApi(url){
         }
     )}
 
+
+btnAll.addEventListener('click', listAllBtn)
+
+function listAllBtn(){
+    container.innerHTML = ''
+    
+    for (personagemID = 1; personagemID <= contagem; personagemID++) {
+        let urlid = `https://swapi.dev/api/people/${personagemID}`
+        getApiAll(urlid)
+        } 
+        
+    }
+
 function getApiAll(urlid){
         let fetchConfig = {
             method: "GET"
@@ -34,19 +48,6 @@ function getApiAll(urlid){
                 })
             }
         )}    
-
-function listAllBtn(){
-    container.innerHTML = ''
-    
-    for (personagemID = 1; personagemID <= contagem; personagemID++) {
-        let urlid = `https://swapi.dev/api/people/${personagemID}`
-        getApiAll(urlid)
-        } 
-        
-    }
-
-
-btnAll.addEventListener('click', listAllBtn)
 
 function listAll(people){
     var data = {
@@ -96,8 +97,27 @@ function listAll(people){
     info.appendChild(birth_year)
     
     let container = document.querySelector(".container")
-    container.appendChild(info)     
+    container.appendChild(info)
+    
 }
+search.addEventListener('input', filterSearch);
+
+function filterSearch(){
+    const filter = search.value.toLowerCase();
+    const filterAll = container.querySelectorAll('.info')
+    
+    filterAll.forEach((jedis) => {
+        let text = jedis.getAttribute("name");
+        if(text.toLocaleLowerCase().includes(filter.toLowerCase())){
+            jedis.style.display = '';
+        }
+        else{
+            jedis.style.display = 'none';
+        }
+    })
+}
+
+
 
 function setButtons(people){
     
