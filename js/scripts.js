@@ -24,10 +24,11 @@ function getApi(url){
 
 
 btnAll.addEventListener('click', listAllBtn)
+search.setAttribute('hidden', true)
 
 function listAllBtn(){
     container.innerHTML = ''
-    
+    search.removeAttribute('hidden')
     for (personagemID = 1; personagemID <= contagem; personagemID++) {
         let urlid = `https://swapi.dev/api/people/${personagemID}`
         getApiAll(urlid)
