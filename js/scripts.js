@@ -197,8 +197,28 @@ function getInfos(people){
         info.appendChild(eye_color)
         info.appendChild(birth_year)
 
+        let divCard = document.createElement("div")
+        divCard.classList.add("card")
+        divCard.setAttribute("class", 'card')
+
+        let img = document.createElement("img")
+        img.classList.add("img")
+        img.setAttribute('src', "./css/add/photo.jpg")
+    
+        let divDados = document.createElement("div")
+        divDados.classList.add("dadosCard")
+        divDados.setAttribute("class", "dadosCard")
+
+        info.appendChild(divCard)
+        info.appendChild(img)
+        info.appendChild(divDados)
+
         let container = document.querySelector(".container")
         container.appendChild(info)     
+
+
+
+
     } 
 }
 
