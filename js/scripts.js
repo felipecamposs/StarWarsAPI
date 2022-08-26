@@ -118,8 +118,6 @@ function filterSearch(){
     })
 }
 
-
-
 function setButtons(people){
     
     var returnAPI = {
@@ -215,10 +213,6 @@ function getInfos(people){
 
         let container = document.querySelector(".container")
         container.appendChild(info)     
-
-
-
-
     } 
 }
 
