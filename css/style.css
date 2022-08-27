@@ -28,6 +28,10 @@ main{
     flex-wrap: wrap;
     align-items: baseline;
     background-color: rgb(16, 10, 40);
+    background-image: url(https://pbs.twimg.com/media/FbIaZIeUcAUcmQP?format=jpg&name=large);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
 }
 
 footer{

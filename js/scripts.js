@@ -7,7 +7,19 @@ const search = document.querySelector('#search')
 var linkNext = ''
 var linkPrevious = ''
 var contagem = ''
+var backgroundImage = ''
 
+function getImageBackground(){
+    fetch("./py/tweet.json")
+        .then(response => {
+            return response.json();
+        })
+            .then(returnJson => {
+                backgroundImage = returnJson.url_image
+                console.log(backgroundImage)
+            })
+        }
+    
 function getApi(url){
     let fetchConfig = {
         method: "GET"
@@ -199,16 +211,16 @@ function getInfos(people){
         divCard.classList.add("card")
         divCard.setAttribute("class", 'card')
 
-        let img = document.createElement("img")
-        img.classList.add("img")
-        img.setAttribute('src', "./css/add/photo.jpg")
+        // let img = document.createElement("img")
+        // img.classList.add("img")
+        // img.setAttribute('src', "./css/add/photo.jpg")
     
         let divDados = document.createElement("div")
         divDados.classList.add("dadosCard")
         divDados.setAttribute("class", "dadosCard")
 
         info.appendChild(divCard)
-        info.appendChild(img)
+        // info.appendChild(img)
         info.appendChild(divDados)
 
         let container = document.querySelector(".container")

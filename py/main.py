@@ -5,7 +5,7 @@ dados = []
 background = ''
 id_dia = ''
 for i,tweet in enumerate(sntwitter.TwitterSearchScraper('from:WallpaperStarWa').get_items()):
-    if i>100:
+    if i>1:
         break
     dia = str("Dia ")
     if dia in tweet.rawContent:
